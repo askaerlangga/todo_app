@@ -11,11 +11,13 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           // Modal Bottom Sheet
           showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
               isScrollControlled: true,
               context: context,
               builder: (context) {
                 return Container(
-                  height: 200,
+                  height: 150,
                   padding: const EdgeInsets.all(15),
                   margin: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -38,7 +40,14 @@ class HomePage extends StatelessWidget {
                         children: [
                           // Calendar Button
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                var selectedDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2022),
+                                    lastDate: DateTime.now());
+                                print(selectedDate);
+                              },
                               icon: const Icon(Icons.calendar_month)),
 
                           // Save Button
