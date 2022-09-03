@@ -36,9 +36,8 @@ class HomePage extends StatelessWidget {
                         height: 10,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Calendar Button
+                          // DatePicker Button
                           IconButton(
                               onPressed: () async {
                                 var selectedDate = await showDatePicker(
@@ -49,6 +48,19 @@ class HomePage extends StatelessWidget {
                                 print(selectedDate);
                               },
                               icon: const Icon(Icons.calendar_month)),
+
+                          // TimePicker Button
+                          IconButton(
+                            onPressed: () async {
+                              var selectedTime = await showTimePicker(
+                                  context: context,
+                                  initialTime:
+                                      const TimeOfDay(hour: 0, minute: 0));
+                              print(selectedTime);
+                            },
+                            icon: const Icon(Icons.access_time),
+                          ),
+                          const Spacer(),
 
                           // Save Button
                           ElevatedButton(
