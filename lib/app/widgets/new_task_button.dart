@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NewTaskButton extends StatelessWidget {
+  final void Function() onPressed;
+
   const NewTaskButton({
+    required this.onPressed,
     super.key,
   });
 
@@ -65,7 +68,7 @@ class NewTaskButton extends StatelessWidget {
 
                         // Save Button
                         ElevatedButton(
-                            onPressed: () {}, child: const Text('Save'))
+                            onPressed: onPressed, child: const Text('Save'))
                       ],
                     )
                   ],
