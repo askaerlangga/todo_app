@@ -2,15 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/app/widgets/new_task_button.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final List<Widget> task = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: NewTaskButton(),
-      appBar: AppBar(title: const Text('ToDo App')),
+      backgroundColor: Colors.purple.shade50,
+      floatingActionButton: NewTaskButton(
+        onPressed: () {},
+      ),
+      appBar: AppBar(
+        title: const Text('ToDo'),
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+        ],
+      ),
       body: ListView(
-        children: const [],
+        children: task,
       ),
     );
   }
