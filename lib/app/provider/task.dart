@@ -8,4 +8,9 @@ class TaskProvider with ChangeNotifier {
     _task.add(widget);
     notifyListeners();
   }
+
+  void removeTask(int index) {
+    _task.removeAt(index);
+    notifyListeners();
+  }
 }

@@ -17,7 +17,10 @@ class HomePage extends StatelessWidget {
             Consumer<TaskProvider>(builder: (context, value, child) {
           return NewTaskButton(
             onPressed: () {
-              value.addTask(TaskCard(text: 'Test'));
+              value.addTask(TaskCard(
+                text: 'Test',
+                deleteButtonOnPressed: () {},
+              ));
             },
           );
         }),
