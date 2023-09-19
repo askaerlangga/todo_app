@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/app/database/task_table.dart';
+import 'package:todo_app/app/database/table/task_table.dart';
 
 class DatabaseInstance {
   final String _databaseName = 'todo_app.db';
