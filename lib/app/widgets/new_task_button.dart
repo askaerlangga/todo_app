@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class NewTaskButton extends StatelessWidget {
   final void Function() onPressed;
+  final TextEditingController textController;
 
   const NewTaskButton({
     required this.onPressed,
+    required this.textController,
     super.key,
   });
 
@@ -28,8 +30,9 @@ class NewTaskButton extends StatelessWidget {
                 child: Column(
                   children: [
                     // New Task Textfield
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: textController,
+                      decoration: const InputDecoration(
                         label: Text(
                           'New Task',
                         ),
