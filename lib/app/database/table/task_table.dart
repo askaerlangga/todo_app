@@ -13,7 +13,7 @@ class TaskTable {
   // Create table
   Future create(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $_tableName ($_id INTEGER PRIMARY KEY, $_name TEXT NULL, $_isDone BOOL DEFAULT 0)');
+        'CREATE TABLE $_tableName ($_id INTEGER PRIMARY KEY, $_name TEXT NULL, $_isDone INTEGER NULL)');
   }
 
   Future<List<TaskModel>> selectAll() async {
@@ -27,5 +27,10 @@ class TaskTable {
     Database db = await _databaseInstance.database();
     final query = await db.insert(_tableName, row);
     return query;
+  }
+
+  Future<int> delete(int id) async {
+    Database db = await _databaseInstance.database();
+    return await db.delete(_tableName, where: '$_id = ?', whereArgs: [id]);
   }
 }
