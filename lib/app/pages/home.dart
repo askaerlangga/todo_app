@@ -45,7 +45,13 @@ class _HomePageState extends State<HomePage> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
-                  return const Text('Tidak ada data');
+                  return Center(
+                    child: Icon(
+                      Icons.check_circle,
+                      size: 100,
+                      color: Colors.purple.withOpacity(0.1),
+                    ),
+                  );
                 }
                 return ListView.builder(
                     itemCount: snapshot.data!.length,
