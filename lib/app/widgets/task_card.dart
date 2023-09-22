@@ -27,12 +27,30 @@ class TaskCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50)),
                 onChanged: onChanged),
             Expanded(
-              child: Text(
-                text,
-                style: (isChecked == true)
-                    ? const TextStyle(decoration: TextDecoration.lineThrough)
-                    : null,
-                overflow: TextOverflow.ellipsis,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    text,
+                    style: (isChecked == true)
+                        ? const TextStyle(
+                            decoration: TextDecoration.lineThrough)
+                        : null,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Container(
+                      margin: const EdgeInsets.only(top: 8),
+                      padding: EdgeInsets.all(5),
+                      // width: 50,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Text(
+                        'Today, 21:45',
+                        style: TextStyle(
+                            color: Colors.purple, fontWeight: FontWeight.bold),
+                      ))
+                ],
               ),
             ),
             IconButton(
