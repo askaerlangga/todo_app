@@ -27,6 +27,9 @@ class TaskCard extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
+                style: (isChecked == true)
+                    ? const TextStyle(decoration: TextDecoration.lineThrough)
+                    : null,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
