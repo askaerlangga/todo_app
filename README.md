@@ -8,6 +8,7 @@
 - Time
 - Local notification
 - Favorite task
+- Dark mode
 
 ### Screenshot
 <table>
