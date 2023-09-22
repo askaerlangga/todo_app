@@ -33,4 +33,10 @@ class TaskTable {
     Database db = await _databaseInstance.database();
     return await db.delete(_tableName, where: '$_id = ?', whereArgs: [id]);
   }
+
+  Future<int> update(String column, var value, int id) async {
+    Database db = await _databaseInstance.database();
+    return await db.rawUpdate(
+        'UPDATE $_tableName SET $column = ? WHERE id = ?', [value, id]);
+  }
 }

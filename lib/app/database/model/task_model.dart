@@ -1,7 +1,7 @@
 class TaskModel {
   int? id;
   String? name;
-  int? isDone;
+  dynamic isDone;
 
   TaskModel({this.id, this.name, this.isDone});
 

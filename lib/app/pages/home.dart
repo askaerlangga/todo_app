@@ -68,6 +68,13 @@ class _HomePageState extends State<HomePage> {
                         },
                         isChecked:
                             (snapshot.data![index].isDone == 1) ? true : false,
+                        onChanged: (value) async {
+                          await _taskTable.update(
+                              'is_done',
+                              (value == true) ? 1 : 0,
+                              snapshot.data![index].id!);
+                          setState(() {});
+                        },
                       );
                     });
               } else {

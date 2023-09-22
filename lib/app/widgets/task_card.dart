@@ -4,10 +4,12 @@ class TaskCard extends StatelessWidget {
   final String text;
   final void Function()? deleteButtonOnPressed;
   final bool isChecked;
+  final void Function(bool?)? onChanged;
 
   const TaskCard({
     required this.text,
     required this.isChecked,
+    required this.onChanged,
     required this.deleteButtonOnPressed,
     super.key,
   });
@@ -23,7 +25,7 @@ class TaskCard extends StatelessWidget {
                 value: isChecked,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
-                onChanged: (value) {}),
+                onChanged: onChanged),
             Expanded(
               child: Text(
                 text,
