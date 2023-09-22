@@ -28,6 +28,9 @@ class _HomePageState extends State<HomePage> {
             onPressed: () async {
               await _taskTable
                   .insert({'name': _taskController.text, 'is_done': 0});
+
+              if (!context.mounted) return;
+              Navigator.of(context).pop();
               setState(() {});
             },
             textController: _taskController,
