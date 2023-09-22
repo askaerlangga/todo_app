@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class TaskCard extends StatelessWidget {
   final String text;
   final void Function()? deleteButtonOnPressed;
+  final bool isChecked;
 
   const TaskCard({
     required this.text,
+    required this.isChecked,
     required this.deleteButtonOnPressed,
     super.key,
   });
@@ -18,7 +20,7 @@ class TaskCard extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(
-                value: true,
+                value: isChecked,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
                 onChanged: (value) {}),

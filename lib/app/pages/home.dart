@@ -14,6 +14,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TaskTable _taskTable = TaskTable();
+  final TextEditingController _taskController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -23,13 +25,12 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton:
             Consumer<TaskProvider>(builder: (context, value, child) {
           return NewTaskButton(
-            onPressed: () {
-              // value.addTask(TaskCard(
-              //   text: 'Test',
-              //   deleteButtonOnPressed: () {},
-              // ));
+            onPressed: () async {
+              await _taskTable
+                  .insert({'name': _taskController.text, 'is_done': 0});
+              setState(() {});
             },
-            textController: value.newTaskController,
+            textController: _taskController,
           );
         }),
         appBar: AppBar(
@@ -50,8 +51,14 @@ class _HomePageState extends State<HomePage> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return TaskCard(
-                          text: snapshot.data![index].name ?? '',
-                          deleteButtonOnPressed: () {});
+                        text: snapshot.data![index].name ?? '',
+                        deleteButtonOnPressed: () async {
+                          await _taskTable.delete(snapshot.data![index].id!);
+                          setState(() {});
+                        },
+                        isChecked:
+                            (snapshot.data![index].isDone == 1) ? true : false,
+                      );
                     });
               } else {
                 return const Center(
