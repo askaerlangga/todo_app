@@ -9,11 +9,13 @@ class TaskTable {
   final String _id = 'id';
   final String _name = 'name';
   final String _isDone = 'is_done';
+  final String _date = 'date';
+  final String _time = 'time';
 
   // Create table
   Future create(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $_tableName ($_id INTEGER PRIMARY KEY, $_name TEXT NULL, $_isDone INTEGER NULL)');
+        'CREATE TABLE $_tableName ($_id INTEGER PRIMARY KEY, $_name TEXT NULL, $_isDone INTEGER NULL, $_date TEXT NULL, $_time TEXT NULL)');
   }
 
   Future<List<TaskModel>> selectAll() async {
@@ -39,4 +41,8 @@ class TaskTable {
     return await db.rawUpdate(
         'UPDATE $_tableName SET $column = ? WHERE id = ?', [value, id]);
   }
+
+  // void hapusDatabase() {
+  //   _databaseInstance.hapusDatabase();
+  // }
 }

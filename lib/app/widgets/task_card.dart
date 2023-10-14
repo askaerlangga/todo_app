@@ -5,6 +5,8 @@ class TaskCard extends StatelessWidget {
   final void Function()? deleteButtonOnPressed;
   final bool isChecked;
   final void Function(bool?)? onChanged;
+  final String date;
+  final String time;
 
   const TaskCard({
     required this.text,
@@ -12,6 +14,8 @@ class TaskCard extends StatelessWidget {
     required this.onChanged,
     required this.deleteButtonOnPressed,
     super.key,
+    required this.date,
+    required this.time,
   });
 
   @override
@@ -40,14 +44,14 @@ class TaskCard extends StatelessWidget {
                   ),
                   Container(
                       margin: const EdgeInsets.only(top: 8),
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       // width: 50,
                       decoration: BoxDecoration(
                           border: Border.all(width: 1),
                           borderRadius: BorderRadius.circular(5)),
                       child: Text(
-                        'Today, 21:45',
-                        style: TextStyle(
+                        '$date, $time',
+                        style: const TextStyle(
                             color: Colors.purple, fontWeight: FontWeight.bold),
                       ))
                 ],
