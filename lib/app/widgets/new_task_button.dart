@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class NewTaskButton extends StatelessWidget {
   final void Function() onPressed;
+  final void Function() onPressedDatePicker;
+  final void Function() onPressedTimePicker;
   final TextEditingController textController;
 
   const NewTaskButton({
     required this.onPressed,
     required this.textController,
     super.key,
+    required this.onPressedDatePicker,
+    required this.onPressedTimePicker,
   });
 
   @override
@@ -46,25 +50,12 @@ class NewTaskButton extends StatelessWidget {
                       children: [
                         // DatePicker Button
                         IconButton(
-                            onPressed: () async {
-                              var selectedDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2022),
-                                  lastDate: DateTime.now());
-                              print(selectedDate);
-                            },
+                            onPressed: onPressedDatePicker,
                             icon: const Icon(Icons.calendar_month)),
 
                         // TimePicker Button
                         IconButton(
-                          onPressed: () async {
-                            var selectedTime = await showTimePicker(
-                                context: context,
-                                initialTime:
-                                    const TimeOfDay(hour: 0, minute: 0));
-                            print(selectedTime);
-                          },
+                          onPressed: onPressedTimePicker,
                           icon: const Icon(Icons.access_time),
                         ),
                         const Spacer(),

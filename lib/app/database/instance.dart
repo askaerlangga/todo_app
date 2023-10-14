@@ -24,4 +24,10 @@ class DatabaseInstance {
     _database = await _initDatabase();
     return _database!;
   }
+
+  // Future hapusDatabase() async {
+  //   Directory documentDirectory = await getApplicationDocumentsDirectory();
+  //   String path = join(documentDirectory.path, _databaseName);
+  //   await deleteDatabase(path);
+  // }
 }
